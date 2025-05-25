@@ -1,0 +1,113 @@
+.profile {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 500px;
+  margin: 6rem auto;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* Decorative accent */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(to bottom, #055992, #4facfe);
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.75rem;
+    margin: 4rem auto;
+    border-radius: 12px;
+    max-width: 90%;
+  }
+
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #f0f7ff;
+      box-shadow: 0 4px 8px rgba(5, 89, 146, 0.1);
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #055992;
+      margin-bottom: 0.25rem;
+    }
+
+    .title {
+      color: #666;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+  }
+
+  .profile-info {
+    display: grid;
+    gap: 1.25rem;
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      .icon {
+        color: #055992;
+        font-size: 1.1rem;
+        min-width: 20px;
+      }
+
+      p {
+        margin: 0;
+        color: #444;
+        font-size: 0.95rem;
+        line-height: 1.5;
+
+        strong {
+          color: #055992;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .edit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    background: #f0f7ff;
+    color: #055992;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #055992;
+      color: white;
+      transform: translateY(-2px);
+    }
+  }
+}
