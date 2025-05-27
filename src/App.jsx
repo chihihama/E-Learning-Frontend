@@ -17,6 +17,7 @@ import PaymentSuccess from './pages/paymentsuccess/PaymentSuccess';
 import Dashbord from './pages/dashbord/Dashbord';
 import CourseStudy from './pages/coursestudy/CourseStudy';
 import Lecture from './pages/lecture/Lecture';
+import Documentation from './pages/documentation/Documentation';
 import AdminDashboard from './admin/Dashboard/AdminDashboard';
 import AdminCourses from './admin/Courses/AdminCourses';
 import AdminUsers from './admin/Users/AdminUsers';
@@ -53,9 +54,11 @@ const App = () => {
             <Route path="/:id/dashboard" element={isAuth?<Dashbord user={user} />:<Login/>} />
             <Route path="/course/study/:id" element={isAuth?<CourseStudy user={user} />:<Login/>} />
             <Route path="/lectures/:id" element={isAuth?<Lecture user={user} />:<Login/>} />
+            <Route path="/documentations/:id" element={isAuth?<Documentation user={user} />:<Login/>} />
             <Route path="/admin/dashboard" element= {isAuth ?<AdminDashboard user={user}/>:<Login/>} />
             <Route path="/admin/course" element= {isAuth ?<AdminCourses user={user}/>:<Login/>} />
             <Route path="/admin/users" element= {isAuth ?<AdminUsers user={user}/>:<Login/>} />
+
 
     </Routes>
     

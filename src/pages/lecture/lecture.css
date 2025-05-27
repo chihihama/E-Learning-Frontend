@@ -1,124 +1,138 @@
+/* =============================
+   Layout for the Lecture Page
+============================= */
 .lecture-page {
   display: flex;
   gap: 2rem;
   min-height: 80vh;
   padding: 2rem 5%;
   background: #f8fafc;
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .lecture-page {
     flex-direction: column;
     padding: 1.5rem;
   }
+}
 
-  .left {
-    flex: 2; /* 66% width */
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    
-    @media (max-width: 768px) {
-      width: 100%;
-      padding: 1.5rem;
-    }
-  }
+/* =============================
+   Left Panel (Main Lecture Content)
+============================= */
+.lecture-page .left {
+  flex: 2;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
 
-  .right {
-    flex: 1; /* 33% width */
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-
-    .lecture-form {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      
-      h2 {
-        font-size: 1.5rem;
-        color: #055992;
-        margin-bottom: 1.5rem;
-        font-weight: 600;
-        position: relative;
-        
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: -8px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 50px;
-          height: 3px;
-          background: linear-gradient(90deg, #055992, #4facfe);
-        }
-      }
-
-      form {
-        label {
-          display: block;
-          margin-bottom: 0.5rem;
-          font-size: 0.9rem;
-          color: #555;
-          font-weight: 500;
-        }
-
-        input {
-          width: 100%;
-          padding: 0.75rem;
-          margin-bottom: 1rem;
-          border: 1px solid #ddd;
-          border-radius: 8px;
-          transition: all 0.3s ease;
-          
-          &:focus {
-            border-color: #055992;
-            box-shadow: 0 0 0 3px rgba(5, 89, 146, 0.1);
-            outline: none;
-          }
-        }
-      }
-    }
-
-    .lecture-number {
-      background: white;
-      padding: 1rem;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 500;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-
-      &:hover {
-        background: #f0f7ff;
-        border-color: #055992;
-        color: #055992;
-        transform: translateY(-2px);
-      }
-
-      &.active {
-        background: #055992;
-        color: white;
-        border-color: #055992;
-      }
-    }
-
-    @media (max-width: 768px) {
-      width: 100%;
-    }
+@media (max-width: 768px) {
+  .lecture-page .left {
+    width: 100%;
+    padding: 1.5rem;
   }
 }
 
-.progress {
+/* =============================
+   Right Panel (Form + Lecture Numbers)
+============================= */
+.lecture-page .right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .lecture-page .right {
+    width: 100%;
+  }
+}
+
+/* =============================
+   Lecture Form Section
+============================= */
+.lecture-page .right .lecture-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Heading */
+.lecture-page .right .lecture-form h2 {
+  font-size: 1.5rem;
+  color: #055992;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  position: relative;
+}
+
+/* Underline decoration */
+.lecture-page .right .lecture-form h2::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
   background: linear-gradient(90deg, #055992, #4facfe);
-  padding: 0.75rem;
-  border-radius: 8px;
-  margin: 0.5rem 0;
-  color: white;
+}
+
+/* Labels */
+.lecture-page .right .lecture-form form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
   font-weight: 500;
+}
+
+/* Input Fields */
+.lecture-page .right .lecture-form form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Input Focus Style */
+.lecture-page .right .lecture-form form input:focus {
+  border-color: #055992;
+  box-shadow: 0 0 0 3px rgba(5, 89, 146, 0.1);
+  outline: none;
+}
+
+/* =============================
+   Lecture Number Selector
+============================= */
+.lecture-page .right .lecture-number {
+  background: white;
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(5, 89, 146, 0.15);
-  width: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Hover effect */
+.lecture-page .right .lecture-number:hover {
+  background: #f0f7ff;
+  border-color: #055992;
+  color: #055992;
+  transform: translateY(-2px);
+}
+
+/* Active state */
+.lecture-page .right .lecture-number.active {
+  background: #055992;
+  color: white;
+  border-color: #055992;
 }
