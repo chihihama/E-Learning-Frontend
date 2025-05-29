@@ -1,41 +1,168 @@
+:root {
+  --primary-color: #000000;
+  --primary-gradient: linear-gradient(135deg, #ffffff, #000000);
+  --text-color: #222;
+  --text-muted: #555;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-shadow: rgba(5, 89, 146, 0.15);
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --border-radius: 16px;
+  --btn-primary-bg: #055992;
+  --btn-primary-hover-bg: #3e607e;
+}
+
 .auth-page {
+  height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 80vh;
-  background-color: white;
+  align-items: center;
+  padding: 4rem 6vw;
+  font-family: var(--font-family);
+  background-image: url('/src/assets/6875028_18184.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+.auth-form {
+  background: var(--card-bg);
+  padding: 3rem 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 12px 30px var(--card-shadow);
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-form:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(5, 89, 146, 0.3);
+}
+
+.auth-form h2 {
+  font-size: clamp(2.4rem, 5vw, 3rem);
+  font-weight: 900;
+  background: linear-gradient(90deg, #000000, #3e607e, #c8e9ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineText 4s linear infinite;
+  letter-spacing: 0.06em;
+  margin-bottom: 2rem;
+  user-select: none;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.auth-form h2::after {
+  content: "";
+  display: block;
+margin: 1rem auto 0;  width: 80px;
+  height: 4px;
+  border-radius: 3px;
+  background: var(--primary-gradient);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.auth-form label {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  font-family: var(--font-family);
+}
+
+.auth-form input:focus {
+  border-color: var(--btn-primary-bg);
+  outline: none;
+  box-shadow: 0 0 8px rgba(5, 89, 146, 0.5);
+}
+
+.auth-form button.common-btn {
+  width: 100%;
+  padding: 12px 0;
+  background: var(--btn-primary-bg);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 6px 15px rgba(5, 89, 146, 0.25);
+  margin-top: 0.5rem;
+}
+
+.auth-form button.common-btn:hover:not(:disabled) {
+  background-color: var(--btn-primary-hover-bg);
+}
+
+.auth-form button.common-btn:disabled {
+  background: #8fb8d6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.auth-form p {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.auth-form p a {
+  color: var(--btn-primary-bg);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.auth-form p a:hover {
+  color: var(--btn-primary-hover-bg);
+  text-decoration: underline;
+}
+
+/* Text shine animation */
+@keyframes shineText {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .auth-page {
+    padding: 3rem 4vw;
+  }
 
   .auth-form {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 300px;
+    padding: 2.5rem 1.75rem;
+    max-width: 90%;
+  }
 
-    h2 {
-      font-size: 24px;
-      color: #055992;
-      margin-bottom: 15px;
-    }
-
-    form {
-      text-align: left;
-
-      label {
-        display: block;
-        margin-bottom: 5px;
-        font-size: 14px;
-        color: #333;
-      }
-
-      input {
-        width: 92%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-    }
+  .auth-form h2 {
+    font-size: 2.4rem;
   }
 }

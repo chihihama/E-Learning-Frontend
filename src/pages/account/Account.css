@@ -1,113 +1,147 @@
+:root {
+  --primary-color: #000000;
+  --primary-gradient: linear-gradient(135deg, #ffffff, #000000);
+  --text-color: #222;
+  --text-muted: #555;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-shadow: rgba(5, 89, 146, 0.15);
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --border-radius: 16px;
+  --btn-primary-bg: #055992;
+  --btn-primary-hover-bg: #3e607e;
+;
+}
+
+.account-section {
+  min-height: 100vh;
+  padding: 4rem 6vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-family);
+  background-image: url('/src/assets/6875028_18184.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
 .profile {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  background: var(--card-bg);
+  padding: 3rem 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 12px 30px var(--card-shadow);
+  max-width: 480px;
   width: 100%;
-  max-width: 500px;
-  margin: 6rem auto;
+  text-align: center;
   position: relative;
-  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  /* Decorative accent */
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 6px;
-    height: 100%;
-    background: linear-gradient(to bottom, #055992, #4facfe);
+.profile:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(5, 89, 146, 0.3);
+}
+
+.profile h2 {
+  font-size: clamp(2.4rem, 5vw, 3rem);
+  font-weight: 900;
+  background: linear-gradient(90deg, #000000, #3e607e, #c8e9ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineText 4s linear infinite;
+  letter-spacing: 0.06em;
+  margin-bottom: 2rem;
+  user-select: none;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.35);
+  position: relative;
+}
+
+.profile h2::after {
+  content: "";
+  display: block;
+  margin: 1rem auto 0;
+  width: 80px;
+  height: 4px;
+  border-radius: 3px;
+  background: var(--primary-gradient);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.profile-info p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-align: left;
+}
+
+.profile-info strong {
+  color: var(--btn-primary-bg);
+}
+
+.common-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--btn-primary-bg);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.75rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  margin: 0.5rem auto;
+  box-shadow: 0 6px 15px rgba(5, 89, 146, 0.25);
+}
+
+.common-btn:hover {
+  background-color: var(--btn-primary-hover-bg);
+}
+
+
+
+
+@keyframes shineText {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .account-section {
+    padding: 3rem 4vw;
   }
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-  }
-
-  @media (max-width: 768px) {
-    padding: 1.75rem;
-    margin: 4rem auto;
-    border-radius: 12px;
+  .profile {
+    padding: 2.5rem 1.75rem;
     max-width: 90%;
   }
 
-  .profile-header {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-
-    .avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #f0f7ff;
-      box-shadow: 0 4px 8px rgba(5, 89, 146, 0.1);
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      color: #055992;
-      margin-bottom: 0.25rem;
-    }
-
-    .title {
-      color: #666;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
+  .profile h2 {
+    font-size: 2.4rem;
   }
 
-  .profile-info {
-    display: grid;
-    gap: 1.25rem;
-
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-
-      .icon {
-        color: #055992;
-        font-size: 1.1rem;
-        min-width: 20px;
-      }
-
-      p {
-        margin: 0;
-        color: #444;
-        font-size: 0.95rem;
-        line-height: 1.5;
-
-        strong {
-          color: #055992;
-          font-weight: 600;
-        }
-      }
-    }
-  }
-
-  .edit-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 2rem;
-    padding: 0.75rem 1.5rem;
-    background: #f0f7ff;
-    color: #055992;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background: #055992;
-      color: white;
-      transform: translateY(-2px);
-    }
+  .common-btn {
+    max-width: 100%;
   }
 }

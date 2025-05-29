@@ -1,20 +1,180 @@
-.main-content {
+:root {
+  --font-family: 'Poppins', sans-serif;
+  --btn-primary-bg: #055992;
+  --text-color: #222222;
+  --card-bg: #f0f4f8;
+  --card-shadow: rgba(5, 89, 146, 0.3);
+  --text-muted: #555555;
+  --node-title-color: #1e3a8a; /* deep blue */
+  --node-subtitle-color: #2563eb; /* bright blue */
+  --node-small-color: #64748b; /* muted blue-gray */
+}
+
+/* Background & container */
+.dashboard-container {
+  min-height: 100vh;
+  padding: 4rem 6vw;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-image: url('/src/assets/6875028_18184.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Animated gradient text for title */
+@keyframes textGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.dashboard-container h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #000000, #3e607e, #c8e9ff);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 900;
+  user-select: none;
+  animation: textGradient 5s ease infinite;
+}
+
+.dashboard-description {
+  font-size: 1.2rem;
+  color: #000000;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  line-height: 1.6;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Diagram container */
+.diagram {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  gap: 0;
+}
 
-  .box {
-    margin-left: 20px;
-    background-color: #055992;
-    padding: 5px;
-    border-radius: 5px;
-    text-align: center;
-    margin-top: 5px;
-    color: white;
+/* Node styling */
+.node {
+  position: absolute;
+  background: var(--card-bg);
+  border-radius: 50%;
+  box-shadow: 0 12px 30px var(--card-shadow);
+  width: 180px;
+  height: 180px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  border: 4px solid var(--btn-primary-bg);
+  color: var(--btn-primary-bg);
+  user-select: none;
+}
 
-    &:hover {
-      background-color: #1a374a;
-    }
+.node:hover {
+  transform: scale(1.1);
+  box-shadow: 0 20px 40px rgba(5, 89, 146, 0.5);
+  border-color: #e63946;
+  color: #e63946;
+}
+
+/* Node text with creative clear styles */
+.node h2 {
+  font-size: 3rem;
+  margin-bottom: 0.3rem;
+  font-weight: 900;
+  color: var(--node-title-color);
+  text-shadow:
+    1px 1px 2px rgba(255, 255, 255, 0.9),
+    2px 2px 5px rgba(0, 0, 0, 0.15);
+  user-select: none;
+  letter-spacing: 1.2px;
+}
+
+.node p {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0.3rem;
+  color: var(--node-subtitle-color);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  user-select: none;
+  letter-spacing: 0.8px;
+}
+
+.node small {
+  font-size: 0.85rem;
+  color: var(--node-small-color);
+  font-weight: 600;
+  font-style: italic;
+  text-shadow: none;
+}
+
+/* Position nodes */
+.node.users {
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.node.courses {
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.node.lectures {
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.node.docs {
+  top: 50%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 2rem 2vw;
+  }
+  .diagram {
+    height: 400px;
+    max-width: 100%;
+  }
+  .node {
+    width: 140px;
+    height: 140px;
+    padding: 1rem;
+  }
+  .node h2 {
+    font-size: 2.4rem;
+  }
+  .node p {
+    font-size: 1rem;
   }
 }

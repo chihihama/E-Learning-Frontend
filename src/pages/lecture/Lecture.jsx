@@ -5,6 +5,8 @@ import axios from "axios";
 import { server } from "../../main";
 import Loading from "../../components/loading/Loading";
 import toast from "react-hot-toast";
+import OnlineLecture from "../../assets/onlinelecture.svg";
+
 
 const Lecture = ({ user }) => {
   const [lectures, setLectures] = useState({});
@@ -161,7 +163,15 @@ const Lecture = ({ user }) => {
                       <h3>{lecture.description}</h3>
                     </>
                   ) : (
-                    <h1>Please Select a Lecture</h1>
+                    
+                   <div className="no-lecture-selected">
+  <img src={OnlineLecture} alt="Select a lecture" className="no-lecture-image" />
+  <h2>Welcome to Your Learning Space 📚</h2>
+  <p>Select a lecture from the list to begin your journey.</p>
+  <p>Each video is designed to boost your skills. Dive in when you're ready!</p>
+</div>
+
+
                   )}
                 </>
               )}

@@ -1,93 +1,126 @@
+:root {
+  --primary-color: #055992;
+  --overlay-bg: rgba(255, 255, 255, 0.85);
+  --primary-gradient: linear-gradient(90deg, #055992, #4facfe);
+}
+
 .course-study-page {
-  padding: 4rem 5%;
-  background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
-  min-height: 80vh;
+  min-height: 100vh;
+  background: url("../../assets/6875028_18184.svg") no-repeat center center/cover;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  font-family: 'Inter', -apple-system, sans-serif; /* Modern font stack */
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
 
-  /* Typography Hierarchy */
-  h2 {
-    font-size: clamp(1.75rem, 3vw, 2.25rem);
-    color: #055992;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    line-height: 1.3;
-    position: relative;
-    
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -0.75rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, #055992, #4facfe);
-      border-radius: 3px;
-    }
+.course-study-overlay {
+  background-color: var(--overlay-bg);
+  backdrop-filter: blur(8px);
+  padding: 3rem 2rem;
+  border-radius: 24px;
+  max-width: 720px;
+  width: 90%;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.course-study-overlay h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  background: linear-gradient(90deg, #000000, #3e607e, #c8e9ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineText 4s linear infinite;
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+  user-select: none;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes shineText {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.course-study-overlay h2::after {
+  content: "";
+  display: block;
+  margin: 1rem auto 0;
+  width: 100px;
+  height: 4px;
+  border-radius: 3px;
+  background: var(--primary-gradient);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.course-study-overlay h4 {
+  font-size: 1.25rem;
+  color: #033a6b;
+  font-weight: 600;
+  margin: 1.5rem 0;
+  line-height: 1.5;
+}
+
+.course-study-overlay h5 {
+  font-size: 1.1rem;
+  color: #055992;
+  font-weight: 500;
+  margin: 0.75rem 0;
+}
+
+.course-study-overlay img {
+  max-width: 100%;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.course-study-overlay a {
+  display: inline-block;
+  margin: 1rem 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  background-color: white;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(5, 89, 146, 0.15);
+}
+
+.course-study-overlay a:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(5, 89, 146, 0.25);
+}
+
+.course-study-overlay a:active {
+  transform: scale(0.98);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .course-study-overlay {
+    padding: 2rem 1.5rem;
   }
 
-  h4 {
-    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-    color: #033a6b; /* Darker shade for contrast */
-    font-weight: 600;
-    margin: 1.25rem 0;
-    text-align: center;
-    line-height: 1.4;
+  .course-study-overlay h4 {
+    font-size: 1.1rem;
   }
 
-  h5 {
-    font-size: clamp(1.1rem, 2vw, 1.25rem);
-    color: #055992;
-    font-weight: 500;
-    margin: 1rem 0;
-    text-align: center;
-  }
-
-  /* Links/Buttons */
-  a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: white;
-    color: #055992;
-    border: 2px solid #055992;
-    border-radius: 8px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 2px 4px rgba(5, 89, 146, 0.1);
-    margin: 0.5rem 0;
-
-    &:hover {
-      background: #055992;
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(5, 89, 146, 0.2);
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
-
-    /* Add icon if needed */
-    &::before {
-      content: "→";
-      font-weight: bold;
-    }
-  }
-
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    padding: 3rem 5%;
-    
-    h2::after {
-      bottom: -0.5rem;
-      width: 40px;
-    }
+  .course-study-overlay a {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
   }
 }

@@ -92,6 +92,10 @@ const AdminCourses = ({ user }) => {
     <Layout>
       <div className="admin-courses">
         <div className="left">
+          <button className="go-back-btn" onClick={() => navigate(-1)}>
+  ← Go Back
+</button>
+
           <h1>All Courses</h1>
           <div className="dashboard-content">
             {courses && courses.length > 0 ? (
@@ -105,6 +109,7 @@ const AdminCourses = ({ user }) => {
         </div>
 
         <div className="right">
+          
           <div className="add-course">
             <div className="course-form">
               <h2>Add Course</h2>

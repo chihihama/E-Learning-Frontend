@@ -5,12 +5,13 @@ import axios from "axios";
 import { server } from "../../main";
 import Loading from "../../components/loading/Loading";
 import toast from "react-hot-toast";
+import LearningAmico from "../../assets/Learning-amico.svg";
 
 const Documentation = ({ user }) => {
   const [documentations, setDocumentations] = useState([]);
   const [documentation, setDocumentation] = useState({});
   const [loading, setLoading] = useState(true);
-  const [docLoading, setDocLoading] = useState(false); // Added missing state
+  const [docLoading, setDocLoading] = useState(false);
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -67,7 +68,7 @@ const Documentation = ({ user }) => {
     }
   };
 
- const submitHandler = async (e) => {
+  const submitHandler = async (e) => {
     setBtnLoading(true);
     e.preventDefault();
     const myForm = new FormData();
@@ -90,7 +91,7 @@ const Documentation = ({ user }) => {
       toast.success(data.message);
       setBtnLoading(false);
       setShow(false);
-      fetch();
+      fetchDocumentations();
       setTitle("");
       setDescription("");
       setPdf("");
@@ -100,7 +101,6 @@ const Documentation = ({ user }) => {
       setBtnLoading(false);
     }
   };
-
 
   const deleteHandler = async (id) => {
     if (window.confirm("Are you sure you want to delete this documentation?")) {
@@ -162,9 +162,11 @@ const Documentation = ({ user }) => {
                 )}
               </>
             ) : (
-              <div className="empty-state">
-                <h2>Select a documentation</h2>
-                <p>Choose from the list on the right to view details</p>
+              <div className="no-lecture-selected">
+                <img src={LearningAmico} alt="Select a documentation" className="no-lecture-image" />
+                <h2>Welcome to Your Documentation Hub 📚</h2>
+                <p>Select a documentation from the list to begin exploring.</p>
+                <p>Each document is designed to enhance your knowledge. Dive in when you're ready!</p>
               </div>
             )}
           </div>

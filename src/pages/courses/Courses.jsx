@@ -1,27 +1,27 @@
-import React from 'react'
+import React from 'react';
 import './courses.css';
 import { CourseData } from '../../context/CourseContext';
 import CourseCard from '../../components/coursecard/CourseCard';
 
 const Courses = () => {
-   const { courses } = CourseData();
+  const { courses } = CourseData();
 
-   console.log(courses);
   return (
-   <div className="courses">
-    <h2>Available Courses</h2>
+    <section className="courses-section">
+      <header className="courses-header">
+        <h2>Explore Our Courses</h2>
+        <p>Unlock your potential with expert-led courses crafted just for you.</p>
+      </header>
 
-    <div className="course-container">
-        {
-            courses && courses.length>0 ? (courses.map((e) =>(
-                <CourseCard key={e._id} course={e}/>
-            )) 
-        ): (
-         <p>No Courses Yet</p>
+      <div className="courses-grid">
+        {courses && courses.length > 0 ? (
+          courses.map((course) => <CourseCard key={course._id} course={course} />)
+        ) : (
+          <p className="no-courses">No Courses Available Yet</p>
         )}
-    </div>
-   </div> 
- );
-}
+      </div>
+    </section>
+  );
+};
 
-export default Courses
+export default Courses;

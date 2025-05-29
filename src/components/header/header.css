@@ -1,15 +1,14 @@
-/* Modern Header.css */
 .header {
   --primary: #4361ee;
   --primary-light: #4895ef;
   --dark: #212529;
-  --light: #f8f9fa;
+  --light: #97c4f2;
   --transition: all 0.3s ease-in-out;
-  
+
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(91, 225, 234, 0.9);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -25,9 +24,12 @@
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   transition: var(--transition);
 }
 
@@ -38,19 +40,40 @@
   color: transparent;
 }
 
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  fill: var(--primary);
+  transition: var(--transition);
+}
+
+.logo:hover .logo-icon {
+  fill: var(--primary-light);
+}
+
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.8rem;
   align-items: center;
 }
 
 .nav-link {
   color: var(--dark);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1rem;
   position: relative;
-  padding: 0.5rem 0;
+  padding: 0.4rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--dark);
   transition: var(--transition);
 }
 
@@ -65,12 +88,16 @@
   transition: var(--transition);
 }
 
-.nav-link:hover::after {
-  width: 100%;
-}
-
 .nav-link:hover {
   color: var(--primary);
+}
+
+.nav-link:hover .nav-icon {
+  fill: var(--primary);
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
 
 .login-link {
@@ -91,13 +118,7 @@
 }
 
 .account-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.account-link::before {
-  content: '👤';
+  /* no extra icon content needed here, icon is inline */
 }
 
 /* Mobile responsiveness */
@@ -105,12 +126,26 @@
   .header-container {
     padding: 1rem;
   }
-  
+
   .nav-links {
     gap: 1rem;
   }
-  
+
   .login-link {
     padding: 0.4rem 1rem;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  .logo-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .nav-icon {
+    width: 18px;
+    height: 18px;
   }
 }

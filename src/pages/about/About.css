@@ -1,22 +1,96 @@
+:root {
+  --primary-color: #000000;
+  --primary-gradient: linear-gradient(135deg, #ffffff, #000000);
+  --text-color: #222;
+  --text-muted: #000000;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-shadow: rgba(5, 89, 146, 0.15);
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --border-radius: 16px;
+}
+
 .about {
-  padding: 80px 0;
+  height: 100vh;
+  padding: 4rem 6vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-family);
+  background-image: url('/src/assets/6875028_18184.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
   text-align: center;
-  min-height: 55vh;
+  overflow: hidden;
+  color: var(--text-color);
+}
+
+.about-content {
+  max-width: 800px;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 25px var(--card-shadow);
+}
+
+/* Header styling */
+.about-content h2 {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 900;
+  background: linear-gradient(90deg, #000000, #3e607e, #c8e9ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineText 4s linear infinite;
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+  user-select: none;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.about-content h2::after {
+  content: "";
+  display: block;
+  margin: 1rem auto 0;
+  width: 80px;
+  height: 4px;
+  border-radius: 3px;
+  background: var(--primary-gradient);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Text paragraph */
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation for gradient text */
+@keyframes shineText {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about {
+    padding: 3rem 4vw;
+  }
 
   .about-content {
-    max-width: 800px;
-    margin: 0 auto;
+    padding: 1.5rem;
+  }
 
-    h2 {
-      font-size: 32px;
-      color: #055992;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 16px;
-      color: #333;
-      line-height: 1.6;
-    }
+  .about-content h2 {
+    font-size: 2.4rem;
   }
 }
