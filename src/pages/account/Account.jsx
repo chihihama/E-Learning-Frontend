@@ -22,7 +22,7 @@ const Account = ({ user }) => {
     <div className="account-section">
       {user && (
         <div className="profile">
-          <h2>Our Profile</h2>
+          <h2>Account </h2>
           <div className="profile-info">
             <p>
               <strong>Name - {user.name}</strong>
